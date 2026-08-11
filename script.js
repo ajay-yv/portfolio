@@ -5,7 +5,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initPreloader();
   initParticleCanvas();
   initCursorGlow();
   initScrollProgress();
@@ -22,38 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initQrModal();
   initContactForm();
 });
-
-/* ==========================================================================
-   1. PRELOADER ANIMATION
-   ========================================================================== */
-function initPreloader() {
-  const preloader = document.getElementById('preloader');
-  const fill = document.getElementById('preloaderFill');
-  const status = document.getElementById('preloaderStatus');
-
-  if (!preloader || !fill) return;
-
-  const steps = [
-    { pct: 25, msg: "Compiling Data Structures & ML Models..." },
-    { pct: 55, msg: "Connecting FastAPI & Next.js Endpoints..." },
-    { pct: 85, msg: "Rendering Recruiter Metrics & Credentials..." },
-    { pct: 100, msg: "Workspace Ready! 🚀" }
-  ];
-
-  let currentStep = 0;
-  const interval = setInterval(() => {
-    if (currentStep < steps.length) {
-      fill.style.width = `${steps[currentStep].pct}%`;
-      if (status) status.textContent = steps[currentStep].msg;
-      currentStep++;
-    } else {
-      clearInterval(interval);
-      setTimeout(() => {
-        preloader.classList.add('fade-out');
-      }, 350);
-    }
-  }, 220);
-}
 
 /* ==========================================================================
    2. INTERACTIVE PARTICLE CANVAS BACKGROUND
